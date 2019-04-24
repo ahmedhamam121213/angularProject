@@ -4,7 +4,7 @@
 <ng-template #showLogin >
   <p><button (click)="login()">login to google</button></p>
 </ng-template>
-<h1 *ngIf="user$ | async as user else showLogin" >
+<h1 *ngIf="authSer.user$ | async as user else showLogin" >
   {{user.displayName}}<br>
   <button (click)="logout()">logout</button>
 </h1>

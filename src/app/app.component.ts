@@ -1,9 +1,7 @@
+import { AuthService } from './sers/auth.service';
 
 import { Component } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { auth } from 'firebase/app';
-import { User } from "firebase";
-import { Observable } from "rxjs";
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,16 +9,16 @@ import { Observable } from "rxjs";
 })
 export class AppComponent {
   title = 'courseTrain';
-  user$ : Observable <User>;
-  constructor( private afAuth : AngularFireAuth ){
+ 
+  constructor( private authSer : AuthService ){
 
-     this.user$ = afAuth.authState;
+    
 
   }
   login(){
-    this.afAuth.auth.signInWithRedirect( new auth.GoogleAuthProvider() );
+    this.authSer.login();
   }
   logout(){
-    this.afAuth.auth.signOut();
+    this.authSer.logout();
   }
 }

@@ -1,3 +1,4 @@
+import { AuthguardService } from './sers/authguard.service';
 import { AuthService } from './sers/auth.service';
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -10,10 +11,12 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from 'src/environments/environment';
 import { LoginComponent } from './comps/login/login.component';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { HomeComponent } from './comps/home/home.component';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +26,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule
   ],
-  providers: [ AuthService ],
+  providers: [ AuthService,AuthguardService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,7 +2,7 @@ import { AuthService } from './auth.service';
 import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router/src/utils/preactivation';
 import { map } from "rxjs/operators";
-import { Router } from '@angular/router';
+import { Router, RouterStateSnapshot } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,16 +10,18 @@ import { Router } from '@angular/router';
 export class AuthguardService implements CanActivate {
   path;
   route;
+  
  
 
   constructor( private auth: AuthService , private router : Router ) { }
-  canActivate(){
+  canActivate(  state: RouterStateSnapshot  ){
     return this.auth.user$.pipe( map ( user => {
       if(user){
         return true;
         
       }else{
-        console.log("home as anomynous");
+    
+        this.router.navigate(['/login'] , { queryParams : { returnUrl : state.url } } );
         return false;
         
 

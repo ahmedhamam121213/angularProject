@@ -1,3 +1,4 @@
+import { ProfileComponent } from './comps/profile/profile.component';
 import { LoginComponent } from './comps/login/login.component';
 import { HomeComponent } from './comps/home/home.component';
 import { NgModule } from '@angular/core';
@@ -6,7 +7,8 @@ import { AuthguardService } from './sers/authguard.service';
 
 const routes: Routes = [
   { path: "home" , component : HomeComponent , canActivate: [ AuthguardService ] },
-  { path : "login" , component: LoginComponent }
+  { path : "login" , component: LoginComponent },
+  { path: "profile" , component : ProfileComponent , canActivate: [ AuthguardService ] }
 ];
 
 @NgModule({

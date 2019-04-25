@@ -1,6 +1,7 @@
 import { AuthService } from './sers/auth.service';
 
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +11,14 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'courseTrain';
  
-  constructor( private authSer : AuthService ){
+  constructor( private authSer : AuthService ,  private route : ActivatedRoute , private router : Router ){
 
-    
+    this.authSer.user$.subscribe( user => {
+      if( user ){
+        let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
+        router.navigateByUrl(returnUrl);
+      }
+    } )
 
   }
   login(){

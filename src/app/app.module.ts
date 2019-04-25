@@ -12,11 +12,13 @@ import { environment } from 'src/environments/environment';
 import { LoginComponent } from './comps/login/login.component';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { HomeComponent } from './comps/home/home.component';
+import { ProfileComponent } from './comps/profile/profile.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

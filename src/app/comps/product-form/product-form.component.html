@@ -1,27 +1,31 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8">
-      <form>
+      <form  #f="ngForm" (ngSubmit)="save(f.value)" >
         <div class="form-group">
           <label for="title">Title</label>
-          <input type="text" class="form-control" id="title">
+          <input type="text"  name="title" [(ngModel)]="title" class="form-control" id="title">
+         
         </div>
         <div class="form-group">
           <label for="price">price</label>
-          <input type="text" class="form-control" id="price">
+          <input type="text" name="price" [(ngModel)]="price" class="form-control" id="price">
+          
         </div>
         <div class="form-group">
           <label for="category">Category</label>
-          <select class="form-control" id="category">
+          <select class="form-control" id="category"  name="catName" [(ngModel)]="catName" >
             <option *ngFor=" let cat of categories | async" [value]="cat.name"  > {{cat.name}} </option>
             
           </select>
+          
         </div>
         <div class="form-group">
           <label for="image">ImageUrl</label>
-          <input type="text" class="form-control" id="image">
+          <input type="text"  name="imgeUrl" [(ngModel)]="imgeUrl" class="form-control" id="image">
+          
         </div>
-        <button class="btn btn-primary">Save</button>&nbsp;
+        <button type="submit" class="btn btn-primary">Save</button>&nbsp;
         <button class="btn btn-danger">Delete</button>
         
        
@@ -29,11 +33,12 @@
     </div>
     <div class="col-md-4">
       <div class="card" style="width: 18rem;">
-        <img class="card-img-top"  style="height: 215px" src="https://assets.www.warnerbros.com/sites/default/files/unknown_posterlarge_1-796659102.jpg" alt="Card image cap">
+        <img class="card-img-top"  style="height: 215px" [src]="imgeUrl ? imgeUrl : 'https://pbs.twimg.com/profile_images/572455103404060672/SrByACMP.jpeg' " alt="Card image cap">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <h5 class="card-title"> {{title ? title : 'product Title'}} </h5>
+          <p class="price"> {{price ? price : 'product Price'}} </p>
+          <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+          <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
         </div>
       </div>
     </div>

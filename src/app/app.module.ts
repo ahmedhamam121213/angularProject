@@ -16,6 +16,8 @@ import { HomeComponent } from './comps/home/home.component';
 import { ProfileComponent } from './comps/profile/profile.component';
 import { AdminProductsComponent } from './comps/admin-products/admin-products.component';
 import { ProductFormComponent } from './comps/product-form/product-form.component';
+import { SaveCatService } from './sers/save-cat.service';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,11 +31,11 @@ import { ProductFormComponent } from './comps/product-form/product-form.componen
     BrowserModule,
     AppRoutingModule,
     AngularFireAuthModule,
-    
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    FormsModule
   ],
-  providers: [ AuthService,AuthguardService,CategoriesService  ],
+  providers: [ AuthService,AuthguardService,CategoriesService,SaveCatService  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

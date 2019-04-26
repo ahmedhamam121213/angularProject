@@ -1,12 +1,11 @@
-<h1>hello this is my app</h1>
-
+<a routerLink="/admin-products">Manage Products</a>
 
 <ng-template #showLogin >
   <p><button (click)="login()">login to google</button></p>
-</ng-template>
-<h1 *ngIf="authSer.user$ | async as user else showLogin" >
-  {{user.displayName}}<br>
+</ng-template><br>
+<i *ngIf="authSer.user$ | async as user else showLogin" >
+  welcome : {{user.displayName}}<br>
   <button (click)="logout()">logout</button>
-</h1>
+</i>
 
 <router-outlet></router-outlet>

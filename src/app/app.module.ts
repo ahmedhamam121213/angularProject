@@ -1,3 +1,4 @@
+import { CategoriesService } from './sers/categories.service';
 import { AuthguardService } from './sers/authguard.service';
 import { AuthService } from './sers/auth.service';
 
@@ -13,12 +14,16 @@ import { LoginComponent } from './comps/login/login.component';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { HomeComponent } from './comps/home/home.component';
 import { ProfileComponent } from './comps/profile/profile.component';
+import { AdminProductsComponent } from './comps/admin-products/admin-products.component';
+import { ProductFormComponent } from './comps/product-form/product-form.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    AdminProductsComponent,
+    ProductFormComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +33,7 @@ import { ProfileComponent } from './comps/profile/profile.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule
   ],
-  providers: [ AuthService,AuthguardService ],
+  providers: [ AuthService,AuthguardService,CategoriesService  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

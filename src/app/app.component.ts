@@ -20,8 +20,8 @@ export class AppComponent {
     this.authSer.user$.subscribe( user => {
       if( user ){
         this.userSrv.save(user);
-        let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
-        router.navigateByUrl(returnUrl);
+        // let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
+        // router.navigateByUrl(returnUrl);
       }
     } )
 
